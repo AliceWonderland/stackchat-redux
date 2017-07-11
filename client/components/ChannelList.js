@@ -10,15 +10,15 @@ function ChannelList(props){
           {
               props.channels.map(channel => {
 
-                  return <li key={channel.id}>
+                  return (<li key={channel.id}>
 
                       <NavLink to={`/channels/${channel.id}`} activeClassName="active">
                           <span># {channel.name}</span>
-                          <span className="badge">{ props.messages.filter(message => message.channelId === 1).length }</span>
+                          <span className="badge">{ props.messages.filter(message => message.channelId === channel.id).length }</span>
                       </NavLink>
 
 
-                  </li>
+                  </li>);
               })
           }
           <li><NavLink to="/new-channel">Create a channel...</NavLink></li>
