@@ -97,7 +97,7 @@ export function postMessage (message) {
 
 }
 
-export function postChannel (channel) {
+export function postChannel (channel,history) {
 
   return function thunk (dispatch) {
     return axios.post('/api/channels', channel)
@@ -106,6 +106,7 @@ export function postChannel (channel) {
         const action = getChannel(newChannel);
         dispatch(action);
         socket.emit('new-channel', newChannel);
+        history.push(`/channels/${newChannel.id}`);
       });
   }
 
